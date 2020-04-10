@@ -1,0 +1,19 @@
+RUNTIME python3
+RUN  cd /tmp ; \
+  curl -L https://build-code.oss-cn-qingdao.aliyuncs.com/leptonica-1.79.0.tar.gz | tar -zxf - ; \
+  cd leptonica-1.79.0 ;  \
+  ./configure --prefix=/code/.fun/root/usr/local ;  \
+  make ;  \
+  make install ;
+
+RUN  export PKG_CONFIG_PATH=/code/.fun/root/usr/local/lib/pkgconfig ; \
+  cd /tmp ; \
+  curl -L https://build-code.oss-cn-qingdao.aliyuncs.com/tesseract-4.1.1.tar.gz | tar -zxf - ; \
+  cd tesseract-4.1.1 ;  \
+  ./autogen.sh ;\
+  ./configure --prefix=/code/.fun/root/usr/local ;  \
+  make ;  \
+  make install ;
+RUN fun-install pip install Cython
+RUN CPPFLAGS='-I/code/.fun/root/usr/local/include -L/code/.fun/root/usr/local/lib' fun-install pip install tesserocr
+RUN git clone https://github.com/tesseract-ocr/tessdata_fast.git

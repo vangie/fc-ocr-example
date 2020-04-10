@@ -1,0 +1,8 @@
+nasMappings:
+  tesserocr:
+    - localNasDir: .fun/root
+      remoteNasDir: /mnt/auto/root
+    - localNasDir: .fun/python
+      remoteNasDir: /mnt/auto/python
+    - localNasDir: tessdata_fast
+      remoteNasDir: /mnt/auto/tessdata

@@ -1,0 +1,18 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  tesserocr:
+    Type: 'Aliyun::Serverless::Service'
+    Properties:
+      Description: 'OCR Example'
+      NasConfig: Auto
+    tesserocr:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Handler: index.handler
+        Runtime: python3
+        CodeUri: './'
+        EnvironmentVariables:
+          LD_LIBRARY_PATH: /mnt/auto/root/usr/local/lib
+          PYTHONUSERBASE: /mnt/auto/python
+          TESSDATA_PREFIX: /mnt/auto/tessdata
