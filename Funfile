@@ -17,3 +17,4 @@ RUN  export PKG_CONFIG_PATH=/code/.fun/root/usr/local/lib/pkgconfig ; \
 RUN fun-install pip install Cython
 RUN CPPFLAGS='-I/code/.fun/root/usr/local/include -L/code/.fun/root/usr/local/lib' fun-install pip install tesserocr
 RUN git clone https://github.com/tesseract-ocr/tessdata_fast.git
+RUN fun-install pip install Pillow

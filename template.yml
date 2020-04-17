@@ -16,3 +16,19 @@ Resources:
           LD_LIBRARY_PATH: /mnt/auto/root/usr/local/lib
           PYTHONUSERBASE: /mnt/auto/python
           TESSDATA_PREFIX: /mnt/auto/tessdata
+      Events:
+        httpTrigger:
+          Type: HTTP
+          Properties:
+            AuthType: ANONYMOUS
+            Methods: ['GET', 'POST']
+  domain_for_ocr:
+    Type: 'Aliyun::Serverless::CustomDomain'
+    Properties:
+      DomainName: Auto
+      Protocol: HTTP
+      RouteConfig:
+        Routes:
+          "/*":
+            ServiceName: tesserocr
+            FunctionName: tesserocr
